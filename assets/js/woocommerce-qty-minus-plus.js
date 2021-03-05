@@ -16,23 +16,18 @@ jQuery(document).ready(function ($) {
     var max = parseInt(input.attr("max"), 10);
     var cur = parseInt(input.val(), 10);
 
+    min = !isNaN(min) ? min : 1;
+    max = !isNaN(max) ? max : Number.MAX_SAFE_INTEGER;
+
     if (dec) {
-      if (min !== NaN) {
-        if (cur > min) {
-          cur -= step;
-          cur = Math.max(cur, min);
-        }
-      } else {
+      if (cur > min) {
         cur -= step;
+        cur = Math.max(cur, min);
       }
     } else {
-      if (max !== NaN) {
-        if (cur < max) {
-          cur += step;
-          cur = Math.max(cur, min);
-        }
-      } else {
+      if (cur < max) {
         cur += step;
+        cur = Math.max(cur, min);
       }
     }
 
