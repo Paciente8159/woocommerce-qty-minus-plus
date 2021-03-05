@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
     } else {
       if (cur < max) {
         cur += step;
-        cur = Math.max(cur, min);
+        cur = Math.min(cur, max);
       }
     }
 
