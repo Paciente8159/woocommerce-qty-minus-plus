@@ -38,5 +38,6 @@ jQuery(document).ready(function ($) {
     if (addbuttonloop.length) {
       addbuttonloop.attr("data-quantity", cur.toString());
     }
+    input.trigger("change");
   });
 });
