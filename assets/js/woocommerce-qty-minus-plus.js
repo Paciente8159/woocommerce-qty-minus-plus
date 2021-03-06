@@ -1,6 +1,13 @@
 "use strict";
 
 jQuery(document).ready(function ($) {
+  $("button.qty-button~input[type=number].qty").change(function () {
+    var addbuttonloop = $(this).parent().siblings(".button.add_to_cart_button");
+    if (addbuttonloop.length) {
+      addbuttonloop.attr("data-quantity", $(this).val().toString());
+    }
+  });
+
   $("button.qty-button").click(function (e) {
     e.preventDefault();
     var step = parseInt($(this).attr("data-inc"), 10);
