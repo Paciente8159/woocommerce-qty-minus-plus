@@ -11,3 +11,4 @@ Both plus and minus buttons content can be customized by using the content filte
 | jcem_wc_qty_plus_button | Modify plus button content |
 | jcem_wc_qty_step | Modify minus/plus step increment/decrement |
 | jcem_wc_qty_classes | Add custom classes to the buttons |
+| jcem_wc_product_loop_qty_controls | Costumize quantity controls in WC product loop |
