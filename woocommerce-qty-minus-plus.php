@@ -60,7 +60,29 @@ add_action('woocommerce_after_quantity_input_field', function () {
 <?php
 });
 
-add_action('wp_enqueue_scripts', function(){
+add_filter('woocommerce_loop_add_to_cart_link', function ($link_html, $product, $args) {
+    $content = "";
+    if (function_exists('woocommerce_quantity_input')) {
+        if ($product->is_in_stock()) {
+            $content = woocommerce_quantity_input(
+                array(
+                    'min_value'   => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
+                    'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
+                    'input_value' => $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+                ),
+                $product,
+                false
+            );
+        }
+    }
+
+    $content .= $link_html;
+    $content = apply_filters('jcem_wc_product_loop_qty_controls', $content, $link_html, $product, $args);
+
+    return $content;
+}, 10, 3);
+
+add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('woocommerce-qty-minus-plus', plugin_dir_url(__FILE__) . 'assets/css/woocommerce-qty-minus-plus.css', array());
     wp_enqueue_script('woocommerce-qty-minus-plus', plugin_dir_url(__FILE__) . 'assets/js/woocommerce-qty-minus-plus.js', array(), true, true);
 });

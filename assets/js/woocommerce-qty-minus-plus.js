@@ -6,12 +6,8 @@ jQuery(document).ready(function ($) {
     var step = parseInt($(this).attr("data-inc"), 10);
     var dec = $(this).hasClass("qty-minus");
     var input = $(this).siblings("input[type=number].qty");
-    /*if(dec) {
-        input = $(this).siblings("input[type=number].qty");
-    }
-    else {
-        input = $(this).prev("input[type=number].qty");
-    }*/
+    var addbuttonloop = $(this).parent().siblings(".button.add_to_cart_button");
+
     var min = parseInt(input.attr("min"), 10);
     var max = parseInt(input.attr("max"), 10);
     var cur = parseInt(input.val(), 10);
@@ -32,5 +28,8 @@ jQuery(document).ready(function ($) {
     }
 
     input.val(cur.toString());
+    if (addbuttonloop.length) {
+      addbuttonloop.attr("data-quantity", cur.toString());
+    }
   });
 });
