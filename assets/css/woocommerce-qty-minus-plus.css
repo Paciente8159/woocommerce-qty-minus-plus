@@ -1,16 +1,16 @@
 .qty-button {
     min-width: 56px;
     padding: 8px 9px;
-    height: 100%;
+    height: auto;
+}
+
+.woocommerce div.quantity {
+  align-items: stretch;
 }
 
 .woocommerce input[type="number"].qty.text {
     margin-right: 0px;
     background: #ffffff;
-}
-
-.qty-plus {
-    margin-right: 12px;
 }
 
 .woocommerce input[type="number"].qty.text::-webkit-outer-spin-button,
